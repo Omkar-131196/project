@@ -5,6 +5,10 @@ pipeline {
 		label 'master'
 	}
 
+	tools {
+    	maven 'Maven-3.9.9'  // Name as defined in Jenkins tools config
+	}
+
 	environment {
         MAVEN_HOME = '/root/tools/apache-maven-3.9.9'  // Adjust as needed
         PATH = "${env.PATH}:${MAVEN_HOME}/bin"
