@@ -3,7 +3,7 @@ pipeline {
 	agent {
 	    node {
 	      label 'master'
-	      customWorkspace '/root/tools'
+	      customWorkspace '/root/test'
 	    }
 	  }
 
@@ -26,7 +26,7 @@ pipeline {
 		
 		stage ('deploy') {
 			steps {
-				sh "sudo cp /root/tools/pipeline_copy/project/target/LoginWebApp.war /root/servers/apache-tomcat-10.1.41/webapps/"
+				sh "sudo cp /root/test/pipeline_copy/project/target/LoginWebApp.war /root/servers/apache-tomcat-10.1.41/webapps/"
 				sh "sudo chmod -R /root/servers/apache-tomcat-10.1.41/webapps/LoginWebApp.war"
 			}
 		}
