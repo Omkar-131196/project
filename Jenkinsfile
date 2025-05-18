@@ -5,13 +5,14 @@ pipeline {
 		label 'master'
 	}
 
-	stages {
+	environment {
+        MAVEN_HOME = '/root/tools/apache-maven-3.9.9'  // Adjust as needed
+        PATH = "${env.PATH}:${MAVEN_HOME}/bin"
+    	}		
 
+	stages {
 		
 		stage ('stage-1') {
-			environment {
-		PATH = "/root/tools/apache-maven-3.9.9/bin:$PATH"
-			}
 
 			steps {
 				sh "sudo mvn clean install"
