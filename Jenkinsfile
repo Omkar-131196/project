@@ -2,7 +2,7 @@ pipeline {
 
 	agent {
 		label 'master'
-		customWorkspace /root/tools
+		customWorkspace '/root/tools'
 	}
 
 	tools {
