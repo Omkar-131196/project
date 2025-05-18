@@ -39,7 +39,7 @@ pipeline {
 
 		stage ('copy-to-slave') {
 			steps {
-				sh "scp /root/test/target/LoginWebApp.warr root@15.207.54.240:/root/server/apache-tomcat-10.1.41/webapps/"
+				sh "scp -o StrictHostKeyChecking=no /root/test/target/LoginWebApp.warr root@15.207.54.240:/root/server/apache-tomcat-10.1.41/webapps/"
 			}
 		}
 	}
