@@ -27,7 +27,7 @@ pipeline {
 		stage ('deploy') {
 			steps {
 				sh "sudo cp /root/test/target/LoginWebApp.war /root/servers/apache-tomcat-10.1.41/webapps/"
-				sh "sudo chmod -R /root/servers/apache-tomcat-10.1.41/webapps/LoginWebApp.war"
+				sh "sudo chmod -R 777 /root/servers/apache-tomcat-10.1.41/webapps/LoginWebApp.war"
 			}
 		}
 
