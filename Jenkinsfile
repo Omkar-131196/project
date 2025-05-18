@@ -8,6 +8,12 @@ pipeline {
 	stages {
 
 		stage ('stage-1') {
+			withMaven {
+		          sh "mvn clean verify"
+		        }
+		}
+
+		stage ('stage-2') {
 
 			steps {
 				sh "sudo mvn clean install"
