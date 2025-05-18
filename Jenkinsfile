@@ -4,6 +4,10 @@ pipeline {
 
 		label 'master'
 	}
+	
+	environment {
+		PATH = "/root/tools/apache-maven-3.9.9/bin:$PATH"
+	}
 
 	stages {
 
