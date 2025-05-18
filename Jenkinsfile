@@ -33,8 +33,7 @@ pipeline {
 
 		stage ('run') {
 			steps {
-				sh "sudo cd /root/servers/apache-tomcat-10.1.41/bin/"
-				sh "./startup.sh"
+				sh "cd /root/servers/apache-tomcat-10.1.41/bin && sudo ./startup.sh"
 			}
 		}
 	}
