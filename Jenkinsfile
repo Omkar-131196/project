@@ -3,6 +3,7 @@ pipeline {
 	agent {
 
 		label 'master'
+		customWorkspace /root/tools
 	}
 
 	tools {
@@ -20,7 +21,7 @@ pipeline {
 
 			steps {
 				sh "mvn clean install"
-				sh "sudo cp /root/.jenkins/workspace/pipeline_copy/target/LoginWebApp.war /root/servers/apache-tomcat-10.1.41/webapps/"
+				sh "sudo cp /root/tools/pipeline_copy/target/LoginWebApp.war /root/servers/apache-tomcat-10.1.41/webapps/"
 				sh "sudo chmod -R /root/servers/apache-tomcat-10.1.41/webapps/LoginWebApp.war"
 				sh "sudo cd /root/servers/apache-tomcat-10.1.41/bin/"
 				sh "sudo ./startup.sh"
