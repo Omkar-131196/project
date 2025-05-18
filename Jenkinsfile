@@ -12,7 +12,7 @@ pipeline {
 	}
 
 	environment {
-        MAVEN_HOME = '/root/tools/apache-maven-3.9.9'  // Adjust as needed
+        MAVEN_HOME = '/root/tools/apache-maven-3.9.9' 
         PATH = "${env.PATH}:${MAVEN_HOME}/bin"
     	}		
 
@@ -34,6 +34,12 @@ pipeline {
 		stage ('run') {
 			steps {
 				sh "cd /root/servers/apache-tomcat-10.1.41/bin && sudo ./startup.sh"
+			}
+		}
+
+		stage ('copy-to-slave') {
+			steps {
+				sh "scp /root/test/target/LoginWebApp.warr root@15.207.54.240:/root/server/apache-tomcat-10.1.41/webapps/"
 			}
 		}
 	}
