@@ -1,9 +1,11 @@
 pipeline {
 
 	agent {
-		label 'master'
-		customWorkspace '/root/tools'
-	}
+	    node {
+	      label 'master'
+	      customWorkspace '/root/tools'
+	    }
+	  }
 
 	tools {
     	maven 'apache-maven-3.9.9' 
