@@ -8,11 +8,14 @@ pipeline {
 	stages {
 
 		stage ('stage-1') {
-			withMaven {
-		          sh "mvn clean verify"
-		        }
-		}
 
+			steps {
+				withMaven {
+			          sh "mvn clean install"
+			        }
+			}
+		}
+		
 		stage ('stage-2') {
 
 			steps {
