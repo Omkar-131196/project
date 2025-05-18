@@ -10,6 +10,7 @@ pipeline {
 		stage ('stage-1') {
 
 			steps {
+				git url: 'https://github.com/Omkar-131196/project.git'
 				withMaven {
 			          sh "mvn clean install"
 			        }
