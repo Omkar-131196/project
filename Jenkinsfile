@@ -7,11 +7,11 @@ pipeline {
 
 	stages {
 
-		environment {
-		PATH = "/root/tools/apache-maven-3.9.9/bin:$PATH"
-			}
 		
 		stage ('stage-1') {
+			environment {
+		PATH = "/root/tools/apache-maven-3.9.9/bin:$PATH"
+			}
 
 			steps {
 				sh "sudo mvn clean install"
