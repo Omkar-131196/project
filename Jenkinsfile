@@ -10,18 +10,8 @@ pipeline {
 	}
 
 	stages {
-
-		stage ('stage-1') {
-
-			steps {
-				git url: 'https://github.com/Omkar-131196/project.git'
-				withMaven {
-			          sh "mvn clean install"
-			        }
-			}
-		}
 		
-		stage ('stage-2') {
+		stage ('stage-1') {
 
 			steps {
 				sh "sudo mvn clean install"
