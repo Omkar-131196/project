@@ -22,7 +22,7 @@ pipeline {
 
 		stage ('build') {
 			steps {
-			sh "cd /root/project/project"
+			sh "cd /root/project"
 			sh "mvn clean install"
 			}
 		}
