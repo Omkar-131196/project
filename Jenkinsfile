@@ -29,7 +29,7 @@ pipeline {
 
 		stage ('deploy') {
 			steps {
-			sh "cp -r /root/project/project/target/LoginWebApp.war /root/servers/apache-tomcat-10.1.41/webapps/"
+			sh "cp -r /root/project/target/LoginWebApp.war /root/servers/apache-tomcat-10.1.41/webapps/"
 			}
 		}
 
