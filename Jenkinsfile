@@ -16,7 +16,7 @@ pipeline {
 
 		stage ('edit-database-file') {
 			steps {
-				sh"sudo sed -i 's|Connection con = DriverManager.getConnection(\\"jdbc:mysql://localhost:3306/test\\",[[:space:]]*\\"root\\", \\"root\\");|Connection con = DriverManager.getConnection(\\\"jdbc:mysql://database-1.cl424m4w4ro9.ap-south-1.rds.amazonaws.com:3306/test\\\", \\"admin\\", \\"omkar1234\\");|' /root/project/src/main/webapp/userRegistration.jsp"
+				sh"sudo sed -i 's|Connection con = DriverManager.getConnection(\\\"jdbc:mysql://localhost:3306/test\\\",[[:space:]]*\\\"root\\\", \\\"root\\\");|Connection con = DriverManager.getConnection(\\\"jdbc:mysql://database-1.cl424m4w4ro9.ap-south-1.rds.amazonaws.com:3306/test\\\", \\\"admin\\\", \\\"omkar1234\\\");|' /root/project/src/main/webapp/userRegistration.jsp"
 			}
 		}
 
