@@ -1,46 +1,47 @@
 pipeline {
 
 	agent {
-	    node {
-	      label 'master'
-	      customWorkspace '/root/test'
-	    }
-	  }
-
-	tools {
-    	maven 'apache-maven-3.9.9' 
+		node {
+		  label 'master'
+		  customWorkspace '/root/project'
+		}
 	}
 
+	tools {
+	maven 'apache-maven-3.9.9'
+        }
+
 	environment {
-        MAVEN_HOME = '/root/tools/apache-maven-3.9.9' 
-        PATH = "${env.PATH}:${MAVEN_HOME}/bin"
-    	}		
+	MAVEN_HOME = '/root/tools/apache-maven-3.9.9'
+	PATH = "${env.PATH}:${MAVEN_HOME}/bin"		
+	}
 
 	stages {
 
+		stage ('edit-database-file') {
+			steps {
+				sh"sed -i 's|Connection con = DriverManager.getConnection(\\\"jdbc:mysql://localhost:3306/test\\\",[[:space:]]*\\\"root\\\", \\\"root\\\");|Connection con = DriverManager.getConnection(\\\"jdbc:mysql://database-1.cl424m4w4ro9.ap-south-1.rds.amazonaws.com:3306/test\\\", \\\"admin\\\", \\\"omkar1234\\\");|' /root/project/project/src/main/webapp/userRegistration.jsp"
+			}
+		}
+
 		stage ('build') {
 			steps {
-				sh "mvn clean install"
+			sh "cd /root/project/project"
+			sh "mvn clean install"
 			}
 		}
-		
+
 		stage ('deploy') {
 			steps {
-				sh "sudo cp /root/test/target/LoginWebApp.war /root/servers/apache-tomcat-10.1.41/webapps/"
-				sh "sudo chmod -R 777 /root/servers/apache-tomcat-10.1.41/webapps/LoginWebApp.war"
+			sh "cp -r /root/project/project/target/LoginWebApp.war /root/servers/apache-tomcat-10.1.41/webapps/"
 			}
 		}
 
-		stage ('run') {
+		stage ('start-server') {
 			steps {
-				sh "cd /root/servers/apache-tomcat-10.1.41/bin && sudo ./startup.sh"
-			}
-		}
-
-		stage ('copy-to-slave') {
-			steps {
-				sh "scp -o StrictHostKeyChecking=no /root/test/target/LoginWebApp.warr root@172.31.2.135:/root/server/apache-tomcat-10.1.41/webapps/"
+			sh "/root/servers/apache-tomcat-10.1.41/bin/startup.sh"
 			}
 		}
 	}
+
 }
