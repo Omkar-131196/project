@@ -18,7 +18,7 @@ pipeline {
 			steps {
 				script {
                     sh """
-                        sed -i 's|jdbc:mysql://localhost:3306/test",[[:space:]]*"root", "root"|jdbc:mysql://database-1.cl424m4w4ro9.ap-south-1.rds.amazonaws.com:3306/test", "admin", "omkar1234"|' /root/project/src/main/webapp/userRegistration.jsp
+                        sed -i 's|jdbc:mysql://localhost:3306/test.*root", "root"|jdbc:mysql://database-1.cl424m4w4ro9.ap-south-1.rds.amazonaws.com:3306/test", "admin", "omkar1234"|' /root/project/src/main/webapp/userRegistration.jsp
                     """
                 }
 			}
