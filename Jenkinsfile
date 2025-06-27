@@ -8,12 +8,18 @@ pipeline {
 	}
 
 	environment {
-	git_url = ''
+	git_url = 'https://github.com/Omkar-131196/project.git'
 	MAVEN_HOME = '/root/tools/apache-maven-3.9.9'
 	PATH = "${env.PATH}:${MAVEN_HOME}/bin"		
 	}
 
 	stages {
+
+		stage ('clone_repo') {
+			steps {
+			sh "git clone ${git_url}"
+			}
+		}
 
 		stage ('edit-database-file') {
 			steps {
