@@ -8,6 +8,7 @@ pipeline {
 	}
 
 	environment {
+	git_url = ''
 	MAVEN_HOME = '/root/tools/apache-maven-3.9.9'
 	PATH = "${env.PATH}:${MAVEN_HOME}/bin"		
 	}
